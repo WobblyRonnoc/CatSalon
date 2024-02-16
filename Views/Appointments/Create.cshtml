@@ -1,0 +1,105 @@
+﻿@using CatSalon.Models.ViewModels
+@model CatSalon.Models.ViewModels.AppointmentServiceSelections
+@{
+    ViewData["Title"] = "Create";
+}
+<a asp-action="Dashboard" asp-controller="Owners"  class="btn btn-lg btn-outline-secondary p-2 shadow-sm m-1">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> 
+    Back
+</a>
+<div class="row ">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+        <h1 class="text-center">Create Appointment</h1>
+        <hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Appointment.CatId" class="control-label">Cat</label>
+                <select asp-for="Appointment.CatId" class ="form-control" asp-items="ViewBag.CatList"></select>
+                <span asp-validation-for="Appointment.CatId" class="text-danger"></span>
+                @Html.ValidationMessage("Cat", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.ScheduledDate" class="control-label">Date and Time</label>
+                <input asp-for="Appointment.ScheduledDate" class="form-control" />
+                <span asp-validation-for="Appointment.ScheduledDate" class="text-danger"></span>
+                @Html.ValidationMessage("Appointment", new { @class = "text-danger" })
+            </div>
+
+            <br />
+
+            <span class="fw-bold p-2 px-2">Select Services</span>
+            <div class="form-group" style="min-width: 500px">
+                <div class="col-lg-auto bg-primary bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+                    <table class="table">
+                        <thead>
+                            <tr class="row-cols-lg-auto bg-light bg-opacity-75 p-5 rounded border thick shadow p-2 mb-3">
+                                @* 
+                                <th>
+                                    Service
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Subtotal
+                                </th>
+                                
+                                <th>
+                                    Select
+                                </th>
+                                *@
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int i = 0;
+                                foreach (var item in Model.ServiceSelections)
+                                {
+                                     <tr class="row-cols-lg-auto bg-light bg-opacity-75 p-5 rounded border thick shadow p-2 mb-3">
+                                        <td class="p-3">
+                                            <label asp-for="@item.Selected" class="control-label fw-bold">
+                                                @item.Service.Title
+                                            </label>
+                                        </td>
+
+                                        @*
+                                        <td class="p-3">
+                                            @item.Service.Description
+                                        </td>
+                                        <td class="p-3">
+                                            $@item.Service.Price
+                                        </td>
+                                        *@
+
+                                        <td class="p-3">
+                                            <input type="checkbox" style=" top: .8rem;width: 1.55rem;height: 1.55rem;" asp-for="@Model.ServiceSelections[i].Selected" />
+                                            <input type="hidden" asp-for="@Model.ServiceSelections[i].Service.Id"  />
+                                            <input type="hidden" asp-for="@Model.ServiceSelections[i].Service.Title" />
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                    @Html.ValidationMessage("ServiceSelections", new { @class = "text-danger bg-light bg-opacity-75 bg-gradient" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row pb-2">
+                    <input type="submit" value="Create" class="btn btn-outline-success rounded-pill p-2" />
+                </div>                
+            </div>
+        </form>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

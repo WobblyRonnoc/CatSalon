@@ -1,0 +1,160 @@
+﻿@using CatSalon.Models.DataAccess;
+@using CatSalon.Controllers;
+@model CatSalon.Models.DataAccess.Owner
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@{
+    if (Model.Cat.Count < 1)
+    {
+       
+        <h1 class="welcome-accent-blue">Welcome to CatSalon!</h1>
+        
+        <h1>To get started <span class="welcome-accent-green"><a asp-action="Create" asp-controller="Cats" class="text-decoration-none text-success">add a cat </a></span>to your profile!</h1>
+   
+    }
+}
+<!--Cat Profiles-->
+<div class="bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5 "> 
+<h1 class="text-center">Dashboard</h1>
+    <h3>Cat Profiles</h3>
+    <div>
+        <table class="table table-striped border rounded">
+        <thead>
+            <tr style="vertical-align: middle">
+                <th>
+                    Name
+                </th>
+                <th>
+                    Breed
+                </th>
+                <th>
+                    Birthdate
+                </th>
+                <th>
+                    Health Condition
+                </th>
+                <th>
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+    @foreach (var cat in Model.Cat) {
+            <tr style="vertical-align: middle">
+                <td>
+                    @cat.Name
+                </td>
+                <td>
+                    @cat.Breed
+                </td>
+                <td>
+                    @cat.BirthDate.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @cat.HealthCondition
+                </td>
+                <td>
+                    @if (cat.Fixed)
+                    {
+                         @:Fixed,       
+                    }
+                    else
+                    {
+                        @:Not Fixed,        
+                    }
+                    @if (cat.Declawed)
+                    {
+                         @:Declawed       
+                    }
+                    else
+                    {
+                        @:Not Declawed        
+                    }            
+                </td>
+                <td>
+                    <div class="float-end">
+                                @Html.ActionLink("Edit", "Edit", "Cats", new {id = cat.Id}, new { @class = "btn btn-warning rounded m-1" })
+                        <span class="px-2"></span>
+                        @Html.ActionLink("Delete", "Delete", "Cats", new {id = cat.Id}, new { @class = "btn btn-outline-danger btn-sm m-1" })
+                    </div>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    </div>
+    <div class="row pt-2">
+        @Html.ActionLink("Add Cat", "Create", "Cats", new {ownerId = Model.Id}, new { @class = "btn btn-success rounded-pill p-3" })
+    </div>
+
+</div>
+<div class="row">
+    <!--User Profile-->
+    <div class="col-lg-5 col-md-6 p-2 bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5 ">
+        <h4>Owner Profile</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+        <div class="pt-1">
+            @Html.ActionLink("Edit Account", "Edit", "Owners", new {id = Model.Id}, new { @class = "btn btn-warning rounded float-end" })
+        </div>
+    </div>        
+    <div class="col-lg-1 col-md-1"></div>
+    <!--Book Appointments-->
+    <div class="col-lg-5 col-md-5 p-2 bg-light bg-gradient bg-opacity-10 p-2 rounded border thick shadow p-3 mb-5">
+        
+        <div class="d-flex row justify-content-center align-items-center p-2">
+            @{
+                if (Model.Cat.Count < 1)
+                {
+                        <button class="btn btn-secondary btn-lg rounded-pill p-2 " disabled>Book Appointment</button>
+                        <span class="my-2"></span>
+                        <button class="btn btn-secondary btn-lg rounded-pill p-2 " disabled>Manage Appointments</button>
+                }
+                else
+                {
+                    if (ViewBag.Appointments.Count < 1)
+                    {
+                        @Html.ActionLink("Book Appointment", "Create", "Appointments", new {id = Model.Id}, new { @class = "btn btn-outline-success btn-lg rounded-pill p-2 shadow p-1 mb-1 "})
+                        <span class="my-2"></span>
+                        <button class="btn btn-secondary btn-lg rounded-pill p-2 " disabled>Manage Appointments</button>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Book Appointment", "Create", "Appointments", new {id = Model.Id}, new { @class = "btn btn-outline-success btn-lg rounded-pill p-2"})
+                        <span class="my-2"></span>
+                        @Html.ActionLink("Manage Appointments", "Index", "Appointments", new {id = Model.Id}, new { @class = "btn btn-outline-success btn-lg rounded-pill  p-2" })
+                        
+                    }
+                }
+            }
+           
+        </div>
+    </div>
+</div>
+
+
+

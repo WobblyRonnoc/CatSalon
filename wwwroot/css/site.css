@@ -1,0 +1,28 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.welcome-accent-green {
+    color: seagreen;
+    font-weight: bold;
+
+}
+.welcome-accent-blue {
+    color: #0d6efd;
+    font-weight: bold;
+}

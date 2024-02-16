@@ -1,0 +1,50 @@
+﻿@model CatSalon.Models.DataAccess.Appointment
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<a asp-action="Index" asp-controller="Appointments"  class="btn btn-lg btn-outline-secondary p-2 shadow-sm m-1">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> 
+    Back
+</a>
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col-md-5 ms-md-auto p-4 bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+        <h1 class="text-center">Cancel this appointment?</h1>
+        <hr />
+        <dl>
+            <dt class = "col-sm-2">
+                Cat: 
+            </dt>
+            <dd class = "col-sm-10">
+                @Model.Cat.Name
+            </dd>
+            <dt class = "col-sm-2">
+                Employee: 
+            </dt>
+            <dd class = "col-sm-10">
+                @ViewData["Employee"]
+            </dd>
+            <dt class = "col-sm-2">
+                Scheduled For: 
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ScheduledDate)
+            </dd>
+        </dl>
+            <div class="form-group row p-3">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row pb-2">
+                        <input type="submit" value="Delete Appointment" class="btn btn-danger btn-lg rounded-pill p-2" />
+                    </div>
+                    <div class="row">
+                        @*Html.ActionLink("Abort", "Dashboard", "Owners", null, new { @class = "btn btn-secondary btn-lg rounded-pill p-2" })*@
+                    </div>
+                </form>
+            </div>
+    </div>
+        <div class="col"></div>
+    <div class="col"></div>
+</div>

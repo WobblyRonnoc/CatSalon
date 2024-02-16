@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore;
+@model CatSalon.Models.DataAccess.Cat
+
+<a asp-action="Dashboard" asp-controller="Owners" class="btn btn-lg btn-outline-secondary p-2 shadow-sm m-1">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> 
+    Back
+</a>
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col-md-6 bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+        <h1 class="text-center">New Cat</h1>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="OwnerId" class="form-control" value="@Context.Session.GetString("userId")" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Breed" class="control-label"></label>
+                <input asp-for="Breed" class="form-control" />
+                <span asp-validation-for="Breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                @Html.ValidationMessage("Date", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthCondition" class="control-label">Health Condition (Optional)</label>
+                <textarea asp-for="HealthCondition" class="form-control"></textarea>
+                <span asp-validation-for="HealthCondition" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col p-3 form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Fixed" /> @Html.DisplayNameFor(model => model.Fixed)
+                    </label>
+                </div>
+                <div class="col p-3 form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Declawed" /> @Html.DisplayNameFor(model => model.Declawed)
+                    </label>
+                </div>
+                <div class="col"></div>
+            </div>
+            
+            
+            <div class="form-group row pb-2">
+                <input type="submit" value="Add Cat" class="btn btn-outline-success rounded-pill p-2" />
+            </div>
+
+        </form>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

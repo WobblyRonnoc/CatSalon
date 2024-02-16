@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CatSalon.Models.DataAccess.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="bg-light bg-opacity-50 bg-gradient p-2 rounded border thick shadow p-3 mb-5 ">
+        <h1 class="display-3 text-center pb-2">Meet The Team</h1>
+    <div class="bg-primary bg-opacity-50 bg-gradient p-2 rounded border thick shadow p-3 mb-5 ">
+        <div class="row p-4">
+            @foreach (var item in Model) {
+                <div class="col-md-4 p-2 m-2 bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+                   <h3 class="text-center">@item.Name</h3>
+                   <hr>
+                   <div>
+                       <h4 class="p-1">Bio</h4>
+                       <p class="p-1 m-1">
+                           ididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, c
+                           onsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor
+                           e et dolore magna aliquaUt enim ad minim veniam, quis nostrud exercita
+                           tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Du
+                           is aute irure dolor in reprehenderit in voluptate velit esse cill
+                           um dolore eu fugiat null in culpa qui officia deserunt mollit anim id est lab
+                       </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

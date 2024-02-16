@@ -1,0 +1,49 @@
+﻿@model List<CatSalon.Models.DataAccess.Appointment>
+
+@{
+    ViewData["Title"] = "Booked Appointments";
+}
+<div class="col-lg-2">
+    <a asp-action="Dashboard" asp-controller="Owners"  class="btn btn-lg btn-outline-secondary p-2 shadow-sm m-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> 
+        Back
+    </a>
+</div>
+<div class="col-lg-11 bg-primary bg-gradient bg-opacity-75 p-2 rounded border thick shadow p-3 mb-5 float-end">
+    <h1 class="text-center pb-3">Manage Appointments</h1>
+    @if(Model.Count() < 1)
+    {   
+        <div class="bg-light bg-opacity-75 bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+            <p class="text-center display-6">No Appointments Currently Booked!</p>
+            <div class="row">
+                @Html.ActionLink("Book Appointment", "Create", "Appointments",null , new { @class = "btn btn-success btn-lg rounded-pill p-2"})
+            </div>
+        </div>
+    }
+    @foreach (var app in Model){
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6 p-2 bg-light bg-opacity-75 bg-gradient p-2 rounded border thick shadow p-3 mb-5 align-content-center">
+                <h4>@app.Cat.Name</h4>
+                <hr />
+                <h5>Scheduled Time: @app.ScheduledDate</h5>
+
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                        @Html.ActionLink("View Details", "Details", "Appointments",new {id = app.Id}, new { @class = "btn btn-primary align-middle m-1 p-2 rounded-pill text-nowrap" })
+            @Html.ActionLink("Cancel Appointment", "Delete", "Appointments", new { id = app.Id } ,new { @class = "btn btn-outline-danger align-middle m-1 p-2 text-nowrap float-end" })
+                    </div>
+                    <div class="col">
+
+                    </div>
+            </div>  
+            <div class="col"></div>
+        </div>  
+
+    }            
+</div>
+<br />
+<br />
+@*Html.ActionLink("Back", "Dashboard","Owners",null, new {@class = "btn btn-secondary rounded-pill p-2"})*@

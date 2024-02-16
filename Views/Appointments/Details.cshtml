@@ -1,0 +1,90 @@
+﻿@using CatSalon.Models.DataAccess
+@model CatSalon.Models.ViewModels.AppointmentDetails
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div>
+    <a asp-action="Index" asp-controller="Appointments"  class="btn btn-lg btn-outline-secondary p-2 shadow-sm m-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> 
+        Back
+    </a>
+            <div class="col-2 float-end">
+            @Html.ActionLink("Cancel Appointment", "Delete", "Appointments", new { id = Model.Appointment.Id } ,new { @class = "btn btn-outline-danger align-middle m-1 p-2 btn-sm text-nowrap float-end" })
+
+        </div>
+</div>
+<div class="row">
+    <div class="col-lg-3 bg-primary bg-opacity-50 bg-gradient p-2 rounded border thick shadow p-3 mb-5 "> 
+    <h1 class="text-center">Appointment Details</h1>
+        <hr />
+        <dl class="row-cols-lg-auto bg-light bg-opacity-50 bg-gradient p-2 rounded border thick shadow p-3 mb-5 ">
+            <dt class = "col-sm-2">
+                Cat
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => Model.Appointment.Cat.Name)
+            </dd>
+            <dt class = "col-sm-2">
+                Employee
+            </dt>
+            <dd class = "col-sm-10">
+                @ViewData["employee"]
+            </dd>
+            <dt class = "col-sm-2">
+                Date
+            </dt>
+            <dd class = "col-sm-10">
+                @Model.Appointment.ScheduledDate.ToString("yyyy-MM-dd")
+            </dd>
+            <dt class = "col-sm-2">
+                Scheduled Time
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Appointment.ScheduledDate.TimeOfDay)
+            </dd>
+        </dl>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8 bg-primary bg-opacity-75 bg-gradient p-2 rounded border thick shadow p-3 mb-5">
+            <h3 class="display-4 text-center">Services</h3>
+            <table class="table">
+                <thead>
+                    <tr class="bg-light bg-gradient bg-opacity-25 p-2 rounded border thick shadow p-3 mb-5 ">
+                        <th>
+                            Service
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Subtotal
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var service in Model.Services)
+                    {
+                        <tr class="bg-light bg-gradient p-2 rounded border thick shadow p-3 mb-5 ">
+                            <td class="text-center">
+                                @service.Title
+                            </td>
+                            <td>
+                                @service.Description
+                            </td>
+                            <td class="text-center fw-bold">
+                               $@service.Price
+                            </td>
+                        </tr>
+                    }
+                    <tr class="bg-light bg-gradient bg-opacity-50 p-2 rounded border thick shadow p-3 mb-5 ">
+                        <td></td>
+                        <td><h5 class="fw-bold">Total: </h5><h6 class="fw-bold" >$@Model.Services.Select(x => x.Price).Sum()</h6></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+</div>
