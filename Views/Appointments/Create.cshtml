@@ -17,7 +17,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Appointment.CatId" class="control-label">Cat</label>
-                <select asp-for="Appointment.CatId" class ="form-control" asp-items="ViewBag.CatList"></select>
+                <select asp-for="Appointment.CatId" class="form-control" asp-items="ViewBag.CatList"></select>
                 <span asp-validation-for="Appointment.CatId" class="text-danger"></span>
                 @Html.ValidationMessage("Cat", new { @class = "text-danger" })
             </div>

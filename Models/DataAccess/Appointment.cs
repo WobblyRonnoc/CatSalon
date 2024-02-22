@@ -39,9 +39,9 @@ namespace CatSalon.Models.DataAccess
             }
         }
 
-        public int EmployeeId { get; set; }  
+        public int EmployeeId { get; set; }
         [DataType(DataType.DateTime)]
-        public DateTime ScheduledDate { get; set; }
+        public DateTime ScheduledDate { get; set; } = DateTime.Now.Date;
 
         public virtual ICollection<Service> Services { get; set; }
         public List<AppointmentService>? AppointmentService { get; set; }

@@ -15,6 +15,7 @@ namespace CatSalon.Models.DataAccess
         public string Name { get; set; } = null!;
         public string Breed { get; set; } = null!;
         [DataType(DataType.Date)]
+        [DisplayFormat]
         public DateTime BirthDate { get; set; } 
         public string? HealthCondition { get; set; }
         public bool Fixed { get; set; }
