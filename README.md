@@ -4,7 +4,7 @@ What is this?
 
 ##### It's a web application made using the C# .NET Core MVC & Entity Framework Core!
 
-## ![Landing Page](H:\LabsRedo\Landing Page.gif)
+## ![Landing Page](H:\LabsRedo\Connor MacNeil - Final\CatSalon\Landing Page.gif)
 
 # What does it do?
 
@@ -18,7 +18,7 @@ This one allows you to save your cat's info to a profile and repeatedly use it f
 
 ##### Logging in
 
-#### ![Login](H:\LabsRedo\Login.gif)
+#### ![Login](H:\LabsRedo\Connor MacNeil - Final\CatSalon\Login.gif)
 
 ##### Editing & deleting account 
 
