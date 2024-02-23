@@ -4,7 +4,7 @@ What is this?
 
 ##### It's a web application made using the C# .NET Core MVC & Entity Framework Core!
 
-## ![Landing Page](H:\LabsRedo\Connor MacNeil - Final\CatSalon\Landing Page.gif)
+## ![Landing Page](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Landing%20Page.gif)
 
 # What does it do?
 
@@ -18,35 +18,35 @@ This one allows you to save your cat's info to a profile and repeatedly use it f
 
 ##### Logging in
 
-#### ![Login](H:\LabsRedo\Connor MacNeil - Final\CatSalon\Login.gif)
+#### ![Login](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Login.gif)
 
 ##### Editing & deleting account 
 
-![Edit and Delete Account](H:\LabsRedo\Edit and Delete Account.gif)
+![Edit and Delete Account](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Edit%20and%20Delete%20Account.gif)
 
 ### 													Cat Profile System 
 
 ##### Adding a new cat profile
 
-![Add Cat](H:\LabsRedo\Add Cat.gif)
+![Add Cat](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Add%20Cat.gif)
 
 ##### Editing and Deleting a cat profile
 
-![Edit and Delete](H:\LabsRedo\Edit and Delete.gif)
+![Edit and Delete](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Edit%20and%20Delete.gif)
 
 ### 												Appointment Management
 
 ##### Booking an appointment
 
-![Make Appointment](H:\LabsRedo\Make Appointment.gif)
+![Make Appointment](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Make%20Appointment.gif)
 
 ##### Cancelling an appointment
 
-![Making an Appointment](H:\LabsRedo\Cancel Appointment.gif)
+![Making an Appointment](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Cancel%20Appointment.gif)
 
 ### Service Listing
 
-![image-20240222115209650](C:\Users\conno\AppData\Roaming\Typora\typora-user-images\image-20240222115209650.png)
+![Service listing](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Services.png)
 
 These are all pulled from the database. No hardcoding here!
 
@@ -56,11 +56,11 @@ These are all pulled from the database. No hardcoding here!
 
 ###### 									
 
-<img src="C:\Users\conno\AppData\Roaming\Typora\typora-user-images\image-20240222143833102.png" alt="image-20240222143833102" style="zoom:150%;" />
+<img src="https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/Signup-form.png" alt="image-20240222143833102" style="zoom:150%;" />
 
 ###### 													Checking the database for existing contact information
 
-<img src="C:\Users\conno\AppData\Roaming\Typora\typora-user-images\image-20240222143856832.png" alt="image-20240222143856832" style="zoom:150%;" />
+<img src="https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/DB-screenshot.png" alt="image-20240222143856832" style="zoom:150%;" />
 
 
 
@@ -102,7 +102,7 @@ These are all pulled from the database. No hardcoding here!
 
 
 
-## The Process
+## How I did it
 
 #### Choosing a Topic
 
@@ -178,9 +178,9 @@ and a **User Case** to outline the possible flow of the application from the use
 
 Using the user stories and scenarios to back up database design reasoning and make firm decisions, I drafted an ERD.
 
-after testing queries to confirm the execution of my logic, I finalized my database builder file: [LINK TO databasebuilder.sql GOES HERE]
+after testing queries to confirm the execution of my logic, I finalized my <a href="https://github.com/WobblyRonnoc/CatSalon/blob/main/CatSalonDBBuilder.sql">database builder file</a>
 
-![image-20240221134737112](C:\Users\conno\AppData\Roaming\Typora\typora-user-images\image-20240221134737112.png)
+![ERD](https://github.com/WobblyRonnoc/CatSalon/blob/main/Configuration%20Files/ERD.png)
 
 ```
 *Appointments are limited to one cat, as having multiple cats in one appointment complicates the database structure exponentially. Requiring the addition of several associative entities and ternary relationships.
